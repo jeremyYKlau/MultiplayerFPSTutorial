@@ -61,13 +61,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Arena\Example\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\HostGame.cs" />
+    <Compile Include="Assets\Scripts\JoinGame.cs" />
+    <Compile Include="Assets\Scripts\MatchSettings.cs" />
+    <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\PlayerMotor.cs" />
     <Compile Include="Assets\Scripts\PlayerSetup.cs" />
     <Compile Include="Assets\Scripts\PlayerShoot.cs" />
+    <Compile Include="Assets\Scripts\PlayerUI.cs" />
     <Compile Include="Assets\Scripts\PlayerWeapon.cs" />
+    <Compile Include="Assets\Scripts\RoomListItem.cs" />
+    <Compile Include="Assets\Scripts\Util.cs" />
+    <Compile Include="Assets\Scripts\WeaponGraphics.cs" />
+    <Compile Include="Assets\Scripts\WeaponManager.cs" />
+    <None Include="Assets\Imports\multiplayer-fps-assets\README.txt" />
+    <None Include="Assets\Arena\Example\ImageEffects\Shaders\SSAOShader.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Jeremy/Documents/Unity/multiplayer fps tutorial/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

@@ -4,14 +4,22 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 [RequireComponent(typeof(PlayerManager))]
+[RequireComponent(typeof(PlayerController))]
 public class PlayerSetup : NetworkBehaviour {
 
     [SerializeField]
     private Behaviour[] componentsToDisable;
     [SerializeField]
     private string remoteLayerName = "RemotePlayer";
-
-    private Camera sceneCamera;
+    [SerializeField]
+    string dontDrawLayerName = "DontDraw";
+    [SerializeField]
+    GameObject playerGraphics;
+    [SerializeField]
+    public GameObject playerUIPrefab;
+    [HideInInspector]
+    public GameObject playerUIInstance;
+    
 
     void Start()
     {
@@ -22,11 +30,33 @@ public class PlayerSetup : NetworkBehaviour {
         }
         else
         {
-            sceneCamera = Camera.main;
-            if (sceneCamera != null)
+            //disable player graphics
+            setLayerRecursively(playerGraphics, LayerMask.NameToLayer(dontDrawLayerName));
+
+            //create playerUI
+            playerUIInstance = Instantiate(playerUIPrefab);
+            playerUIInstance.name = playerUIPrefab.name;
+
+            PlayerUI ui = playerUIInstance.GetComponent<PlayerUI>();
+            if(ui == null)
             {
-                sceneCamera.gameObject.SetActive(false);
+                Debug.LogError("No ui component on player ui prefab");
             }
+            ui.setController(GetComponent<PlayerController>());
+
+            GetComponent<PlayerManager>().setupPlayer();
+        }
+    }
+
+    //recursive method, dangerous because if they don't function properly can get stuck at a state and freeze the game
+    //if this doesn't function properly may cause errors and even game freeze/crash
+    void setLayerRecursively (GameObject obj, int newLayer)
+    {
+        obj.layer = newLayer;
+
+        foreach (Transform child in obj.transform)
+        {
+            setLayerRecursively(child.gameObject, newLayer);
         }
     }
 
@@ -51,13 +81,16 @@ public class PlayerSetup : NetworkBehaviour {
             componentsToDisable[i].enabled = false;
         }
     }
-
+    //when we are destroyed
     void OnDisable()
     {
-        if(sceneCamera != null)
+        Destroy(playerUIInstance);
+
+        if (isLocalPlayer)
         {
-            sceneCamera.gameObject.SetActive(true);
+            GameManager.instance.setSceneCamera(true);
         }
+
         GameManager.unRegisterPlayer(transform.name);
     }
 }

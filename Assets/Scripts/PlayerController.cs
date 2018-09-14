@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(ConfigurableJoint))]
 [RequireComponent(typeof(PlayerMotor))]
 public class PlayerController : MonoBehaviour {
@@ -11,7 +11,16 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float lookSensitivity = 3f;
     [SerializeField]
+
     private float thrusterForce = 1000f;
+    [SerializeField]
+    private float thrusterFuelBurnSpeed = 1f;
+    [SerializeField]
+    private float thrusterFuelRegenSpeed = 0.3f;
+    private float thrusterFuelAmount = 1f;
+
+    [SerializeField]
+    private LayerMask environmentMask;
 
     [Header("Thruster Settings")]
     //[SerializeField]
@@ -21,26 +30,46 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private float jointMaxForce = 40f;
 
+    //Component caching
     private PlayerMotor motor;
     private ConfigurableJoint joint;
+    private Animator animator;
 
     void Start()
     {
         joint = GetComponent<ConfigurableJoint>();
         motor = GetComponent<PlayerMotor>();
+        animator = GetComponent<Animator>();
 
         setJointSettings(jointSpring);
     }
 
     void Update()
     {
+        if (PauseMenu.isOn)
+        {
+            return;
+        }
+        //Setting target position for spring/thruster correcting the physics of gravity when flying over other objects
+        RaycastHit groundHit;
+        if (Physics.Raycast(transform.position, Vector3.down, out groundHit, 100f, environmentMask))
+        {
+            joint.targetPosition = new Vector3(0f, -groundHit.point.y, 0f);
+        }
+        else
+        {
+            joint.targetPosition = new Vector3(0f, 0f, 0f);
+        }
+
         float xMov = Input.GetAxis("Horizontal");
-        float yMov = Input.GetAxis("Vertical");
+        float zMov = Input.GetAxis("Vertical");
 
         Vector3 movHorizontal = transform.right * xMov;
-        Vector3 movVertical = transform.forward * yMov;
+        Vector3 movVertical = transform.forward * zMov;
 
-        Vector3 velocityParam = (movHorizontal + movVertical).normalized * speed;
+        Vector3 velocityParam = (movHorizontal + movVertical) * speed;
+
+        animator.SetFloat("ForwardVelocity", zMov);
 
         motor.move(velocityParam);
 
@@ -56,19 +85,36 @@ public class PlayerController : MonoBehaviour {
 
         motor.rotateCamera(cameraRotationParamX);
 
+        //calc thruster force based off user
         Vector3 thrusterForceTemp = Vector3.zero;
 
-        if (Input.GetButton("Jump"))
+        //if we're flying
+        if (Input.GetButton("Jump") && thrusterFuelAmount > 0f)
         {
-            thrusterForceTemp = Vector3.up * thrusterForce;
-            setJointSettings(0f);
+            thrusterFuelAmount -= thrusterFuelBurnSpeed * Time.deltaTime;
+
+            if(thrusterFuelAmount >= 0.01f)
+            {
+                thrusterForceTemp = Vector3.up * thrusterForce;
+                setJointSettings(0f);
+            }
         }
+        //else we're not flying
         else
         {
+            thrusterFuelAmount += thrusterFuelRegenSpeed * Time.deltaTime;
+
             setJointSettings(jointSpring);
         }
 
+        thrusterFuelAmount = Mathf.Clamp(thrusterFuelAmount, 0f, 1f);
+
         motor.applyThruster(thrusterForceTemp);
+    }
+
+    public float getThrusterFuelAmount()
+    {
+        return thrusterFuelAmount;
     }
 
     private void setJointSettings(float jointSpringTemp)
