@@ -8,6 +8,8 @@ public class PlayerUI : MonoBehaviour {
     RectTransform fuelAmount;
     [SerializeField]
     GameObject pauseMenu;
+    [SerializeField]
+    GameObject scoreboard;
 
     private PlayerController playerController;
 
@@ -28,9 +30,17 @@ public class PlayerUI : MonoBehaviour {
         {
             togglePauseMenu();
         }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            scoreboard.SetActive(true);
+        }
+        else if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            scoreboard.SetActive(false);
+        }
     }
 
-    void togglePauseMenu()
+    public void togglePauseMenu()
     {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         PauseMenu.isOn = pauseMenu.activeSelf;

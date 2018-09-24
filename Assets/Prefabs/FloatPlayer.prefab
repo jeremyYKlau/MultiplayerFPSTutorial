@@ -155,6 +155,7 @@ GameObject:
   - component: {fileID: 20224463629233248}
   - component: {fileID: 81573759348162258}
   - component: {fileID: 124980875542456036}
+  - component: {fileID: 114581435153511026}
   m_Layer: 9
   m_Name: Camera
   m_TagString: Untagged
@@ -231,6 +232,7 @@ GameObject:
   - component: {fileID: 95324162885976130}
   - component: {fileID: 114322068159251338}
   - component: {fileID: 114221290351129376}
+  - component: {fileID: 114440779016578502}
   m_Layer: 9
   m_Name: FloatPlayer
   m_TagString: Player
@@ -771,6 +773,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  kills: 0
+  deaths: 0
   disableOnDeath:
   - {fileID: 114032939133363438}
   - {fileID: 114616250195159648}
@@ -841,6 +845,17 @@ MonoBehaviour:
   m_MovementThreshold: 0.001
   m_InterpolateRotation: 0.3
   m_InterpolateMovement: 0
+--- !u!114 &114440779016578502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1829565813290938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ccfc88c3febc3243baa1168411fb258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114495026126910600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -860,6 +875,26 @@ MonoBehaviour:
   m_MovementThreshold: 0.001
   m_InterpolateRotation: 0.3
   m_InterpolateMovement: 0
+--- !u!114 &114581435153511026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1499036220805612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0923359e9e352a4b9b11c7b7161ad67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Radius: 0.063
+  m_SampleCount: 1
+  m_OcclusionIntensity: 1.5
+  m_Blur: 2
+  m_Downsampling: 2
+  m_OcclusionAttenuation: 1
+  m_MinZ: 0.01
+  m_SSAOShader: {fileID: 4800000, guid: 43ca18288c424f645aaa1e9e07f04c50, type: 3}
+  m_RandomTexture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
 --- !u!114 &114616250195159648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -938,6 +973,7 @@ MonoBehaviour:
   - {fileID: 81573759348162258}
   - {fileID: 95324162885976130}
   - {fileID: 20147785866139346}
+  - {fileID: 114440779016578502}
   remoteLayerName: RemoteLayer
   dontDrawLayerName: DontDraw
   playerGraphics: {fileID: 1668684394412706}
@@ -972,8 +1008,8 @@ ConfigurableJoint:
   m_ConnectedBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.10004157, y: 1.33, z: 5.209028}
+  m_AutoConfigureConnectedAnchor: 0
+  m_ConnectedAnchor: {x: 0, y: 1, z: 0}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2

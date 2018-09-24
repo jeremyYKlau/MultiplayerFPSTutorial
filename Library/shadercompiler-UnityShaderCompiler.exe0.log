@@ -1,35 +1,37 @@
 Base path: C:/Program Files/Unity/Editor/Data
 Cmd: initializeCompiler
+Cmd: preprocess
+  error: 1 plat 21 at (99): Duplicate #pragma vertex found, ignoring: #pragma vertex vert_ao
+  error: 1 plat 21 at (100): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
+  error: 1 plat 21 at (132): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
+  error: 1 plat 21 at (133): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
+  error: 1 plat 21 at (177): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
+  error: 1 plat 21 at (178): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
+  insize=6953 outsize=626 ok=1
 Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: compileSnippet
-  api=4 type=0 insize=1520 outsize=1806 kw=UNITY_PASS_DEFERRED LIGHTPROBE_SH pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=1520 outsize=1806 kw=UNITY_PASS_DEFERRED LIGHTPROBE_SH _EMISSION UNITY_HDR_ON pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=1520 outsize=1930 kw=UNITY_PASS_DEFERRED _NORMALMAP _METALLICGLOSSMAP pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=1520 outsize=1550 kw=UNITY_PASS_DEFERRED pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=1520 outsize=2618 kw=UNITY_PASS_DEFERRED LIGHTPROBE_SH _EMISSION pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=1520 outsize=2946 kw=UNITY_PASS_DEFERRED LIGHTPROBE_SH UNITY_HDR_ON _NORMALMAP _METALLICGLOSSMAP pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
-Cmd: initializeCompiler
+Cmd: preprocess
+  error: 1 plat 21 at (99): Duplicate #pragma vertex found, ignoring: #pragma vertex vert_ao
+  error: 1 plat 21 at (100): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
+  error: 1 plat 21 at (132): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
+  error: 1 plat 21 at (133): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
+  error: 1 plat 21 at (177): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
+  error: 1 plat 21 at (178): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
+  insize=7213 outsize=667 ok=1
+Cmd: preprocess
+  error: 1 plat 21 at (99): Duplicate #pragma vertex found, ignoring: #pragma vertex vert_ao
+  error: 1 plat 21 at (100): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
+  error: 1 plat 21 at (132): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
+  error: 1 plat 21 at (133): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
+  error: 1 plat 21 at (177): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
+  error: 1 plat 21 at (178): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
+  insize=7099 outsize=662 ok=1
+Cmd: preprocess
+  error: 1 plat 21 at (99): Duplicate #pragma vertex found, ignoring: #pragma vertex vert_ao
+  error: 1 plat 21 at (100): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
+  error: 1 plat 21 at (132): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
+  error: 1 plat 21 at (133): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
+  error: 1 plat 21 at (177): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
+  error: 1 plat 21 at (178): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
+  insize=7217 outsize=671 ok=1
 Cmd: initializeCompiler
 Cmd: initializeCompiler

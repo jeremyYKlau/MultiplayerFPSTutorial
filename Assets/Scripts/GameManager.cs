@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq; //for toarray and has a lot of other useful methods
 
 public class GameManager : MonoBehaviour {
 
@@ -57,6 +58,10 @@ public class GameManager : MonoBehaviour {
         return players[playerID];
     }
 
+    public static PlayerManager[] getAllPlayers()
+    {
+        return players.Values.ToArray();
+    }
     //unnessesary code just for a gui for the dictionary to help visualize in unity inspector
     /*void OnGUI()
     {

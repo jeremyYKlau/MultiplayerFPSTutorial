@@ -20,6 +20,12 @@ public class PlayerManager : NetworkBehaviour {
     [SyncVar]
     private int currentHealth;
 
+    [SyncVar]
+    public string username = "loading... ";
+
+    public int kills;
+    public int deaths;
+
     [SerializeField]
     private Behaviour[] disableOnDeath;
     //need this in inspector to match the above behaviors enabled at the setup
@@ -85,7 +91,7 @@ public class PlayerManager : NetworkBehaviour {
     }*/
 
     [ClientRpc]//a command that is sent through all clients to ensure everyone gets it
-    public void RpcTakeDamage(int amount)
+    public void RpcTakeDamage(int amount, string sourceID)
     {
         if (isDead)
         {
@@ -95,13 +101,21 @@ public class PlayerManager : NetworkBehaviour {
         Debug.Log(transform.name + " now has " + currentHealth + " health");
         if(currentHealth <= 0)
         {
-            playerDie();
+            playerDie(sourceID);
         }
     }
 
-    private void playerDie()
+    private void playerDie(string sourceID)
     {
         isDead = true;
+
+        PlayerManager sourcePlayer = GameManager.getPlayer(sourceID);
+        if(sourcePlayer != null)
+        {
+            sourcePlayer.kills++;
+        }
+
+        deaths++;
 
         //disable components for dead player
         for (int i = 0; i < disableOnDeath.Length; i++)

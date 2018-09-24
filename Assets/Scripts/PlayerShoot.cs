@@ -97,14 +97,13 @@ public class PlayerShoot : NetworkBehaviour {
 
         //shooting so call onshoot method on server
         CmdOnShoot();
-        Debug.Log("SHOOTING!");//debug statement
 
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, currentWeapon.range, mask))
         {
             if(hit.collider.tag == PLAYER_TAG) //could also have used layer remote player
             {
-                CmdPlayerShot(hit.collider.name, currentWeapon.damage);
+                CmdPlayerShot(hit.collider.name, currentWeapon.damage, transform.name);
             }
             //After hitting something check call onhit method on server
             CmdOnHit(hit.point, hit.normal);
@@ -113,11 +112,9 @@ public class PlayerShoot : NetworkBehaviour {
 
     //called on server side and for protocal use cmd before each method to signify server side method
     [Command]
-    void CmdPlayerShot(string playerID, int damage)
+    void CmdPlayerShot(string playerID, int damage, string sourceID)
     {
-        Debug.Log(playerID + " has been shot");
-
         PlayerManager player = GameManager.getPlayer(playerID);
-        player.RpcTakeDamage(damage);
+        player.RpcTakeDamage(damage, sourceID);
     }
 }

@@ -35,6 +35,7 @@ sampler2D _RandomTexture;
 float4 _Params; // x=radius, y=minz, z=attenuation power, w=SSAO power
 
 // HLSL and GLSL do not support arbitrarily sized arrays as function parameters (eg. float bla[]), whereas Cg does.
+/*
 #if !defined(UNITY_COMPILER_CG)
 
 #	define INPUT_SAMPLE_COUNT 8
@@ -58,36 +59,39 @@ float4 _Params; // x=radius, y=minz, z=attenuation power, w=SSAO power
 #	include "frag_ao.cginc"
 #endif
 
-ENDCG
+ENDCG*/
 
-	// ---- SSAO pass, 8 samples
-	Pass {
-		
-CGPROGRAM
-#pragma vertex vert_ao
-#pragma fragment frag
-#pragma target 3.0
-
-
-half4 frag (v2f_ao i) : SV_Target
-{
-	#define SAMPLE_COUNT 8
-	const float3 RAND_SAMPLES[SAMPLE_COUNT] = {
-		float3(0.01305719,0.5872321,-0.119337),
-		float3(0.3230782,0.02207272,-0.4188725),
-		float3(-0.310725,-0.191367,0.05613686),
-		float3(-0.4796457,0.09398766,-0.5802653),
-		float3(0.1399992,-0.3357702,0.5596789),
-		float3(-0.2484578,0.2555322,0.3489439),
-		float3(0.1871898,-0.702764,-0.2317479),
-		float3(0.8849149,0.2842076,0.368524),
-	};
-    return frag_ao (i, SAMPLE_COUNT, RAND_SAMPLES);
-}
-ENDCG
-
-	}
-
+	     // ---- SSAO pass, 8 samples
+     Pass {
+         
+ CGPROGRAM
+ #pragma vertex vert_ao
+ #pragma fragment frag
+ #pragma target 3.0
+ #pragma fragmentoption ARB_precision_hint_fastest
+ 
+ #define INPUT_SAMPLE_COUNT 8
+ #include "frag_ao.cginc"
+ 
+ half4 frag (v2f_ao i) : COLOR
+ {
+     #define SAMPLE_COUNT 8
+     const float3 RAND_SAMPLES[SAMPLE_COUNT] = {
+         float3(0.01305719,0.5872321,-0.119337),
+         float3(0.3230782,0.02207272,-0.4188725),
+         float3(-0.310725,-0.191367,0.05613686),
+         float3(-0.4796457,0.09398766,-0.5802653),
+         float3(0.1399992,-0.3357702,0.5596789),
+         float3(-0.2484578,0.2555322,0.3489439),
+         float3(0.1871898,-0.702764,-0.2317479),
+         float3(0.8849149,0.2842076,0.368524),
+     };
+     return frag_ao (i, SAMPLE_COUNT, RAND_SAMPLES);
+ }
+ ENDCG
+ 
+     }
+		 }
 // ---- SSAO pass, 14 samples
 	Pass {
 		

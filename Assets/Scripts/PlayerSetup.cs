@@ -45,6 +45,28 @@ public class PlayerSetup : NetworkBehaviour {
             ui.setController(GetComponent<PlayerController>());
 
             GetComponent<PlayerManager>().setupPlayer();
+
+            string usernameTemp = "loading... ";
+            if (UserAccountManager.isLoggedIn)
+            {
+                usernameTemp = UserAccountManager.loggedIn_Username;
+            }
+            else
+            {
+                usernameTemp = transform.name;
+            }
+            CmdSetUsername(transform.name, usernameTemp);
+        }
+    }
+
+    [Command]
+    void CmdSetUsername(string playerID, string username)
+    {
+        PlayerManager player = GameManager.getPlayer(playerID);
+        if(player != null)
+        {
+            Debug.Log(username + " has joined");
+            player.username = username;
         }
     }
 

@@ -48,7 +48,20 @@ public class PlayerController : MonoBehaviour {
     {
         if (PauseMenu.isOn)
         {
+            if(Cursor.lockState != CursorLockMode.None)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+            motor.move(Vector3.zero);
+            motor.rotate(Vector3.zero);
+            motor.rotateCamera(0f);
+            motor.applyThruster(Vector3.zero);
             return;
+        }
+
+        if(Cursor.lockState != CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
         }
         //Setting target position for spring/thruster correcting the physics of gravity when flying over other objects
         RaycastHit groundHit;
