@@ -42,7 +42,7 @@ public class PlayerSetup : NetworkBehaviour {
             {
                 Debug.LogError("No ui component on player ui prefab");
             }
-            ui.setController(GetComponent<PlayerController>());
+            ui.setPlayer(GetComponent<PlayerManager>());
 
             GetComponent<PlayerManager>().setupPlayer();
 

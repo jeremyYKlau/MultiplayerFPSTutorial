@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private GameObject sceneCamera;
 
+    public delegate void OnPlayerKilledCallback(string player, string source);
+    public OnPlayerKilledCallback onPlayerKilledCallback;//used when we want to call multiple methods from one place, that's the purpose of a delegate callback
+
     //creates a singleton of the gamemanager because we will only ever have one
     private void Awake()
     {

@@ -42,6 +42,10 @@ public class PlayerManager : NetworkBehaviour {
 
     private bool firstSetup = true;
 
+    public float getHealthPercent()
+    {
+        return (float)currentHealth / maxHealth;
+    }
     public void setupPlayer ()
     {
         if (isLocalPlayer)
@@ -77,18 +81,6 @@ public class PlayerManager : NetworkBehaviour {
 
         setDefaults();
     }
-    /*just for debugging to test death of player instakill key when pressed K
-    private void Update()
-    {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            RpcTakeDamage(9999);
-        }
-    }*/
 
     [ClientRpc]//a command that is sent through all clients to ensure everyone gets it
     public void RpcTakeDamage(int amount, string sourceID)
@@ -110,9 +102,11 @@ public class PlayerManager : NetworkBehaviour {
         isDead = true;
 
         PlayerManager sourcePlayer = GameManager.getPlayer(sourceID);
+        //the purpose of sourceplayer is to allow for other sources to kill the player like gravity although we won't have that this tutorial
         if(sourcePlayer != null)
         {
             sourcePlayer.kills++;
+            GameManager.instance.onPlayerKilledCallback.Invoke(username, sourcePlayer.username);
         }
 
         deaths++;

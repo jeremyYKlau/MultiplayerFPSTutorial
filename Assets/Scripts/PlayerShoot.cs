@@ -35,6 +35,15 @@ public class PlayerShoot : NetworkBehaviour {
             return;
         }
 
+        if (currentWeapon.currentBullets < currentWeapon.maxBullets)
+        {
+            if (Input.GetButtonDown("Reload"))
+            {
+                weaponManager.reload();
+                return;
+            }
+        }
+
         if(currentWeapon.fireRate <= 0f)
         {
             if (Input.GetButtonDown("Fire1"))
@@ -90,10 +99,18 @@ public class PlayerShoot : NetworkBehaviour {
     [Client]
     void shoot()
     {
-        if (!isLocalPlayer)
+        if (!isLocalPlayer || weaponManager.isReloading)
         {
             return;
         }
+
+        if(currentWeapon.currentBullets <= 0)
+        {
+            weaponManager.reload();
+            return;
+        }
+
+        currentWeapon.currentBullets--;
 
         //shooting so call onshoot method on server
         CmdOnShoot();
@@ -107,6 +124,11 @@ public class PlayerShoot : NetworkBehaviour {
             }
             //After hitting something check call onhit method on server
             CmdOnHit(hit.point, hit.normal);
+        }
+
+        if(currentWeapon.currentBullets <= 0)
+        {
+            weaponManager.reload();
         }
     }
 

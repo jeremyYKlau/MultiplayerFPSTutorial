@@ -1,37 +1,13 @@
 Base path: C:/Program Files/Unity/Editor/Data
 Cmd: initializeCompiler
-Cmd: preprocess
-  error: 1 plat 21 at (99): Duplicate #pragma vertex found, ignoring: #pragma vertex vert_ao
-  error: 1 plat 21 at (100): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
-  error: 1 plat 21 at (132): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
-  error: 1 plat 21 at (133): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
-  error: 1 plat 21 at (177): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
-  error: 1 plat 21 at (178): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
-  insize=6953 outsize=626 ok=1
 Cmd: initializeCompiler
-Cmd: preprocess
-  error: 1 plat 21 at (99): Duplicate #pragma vertex found, ignoring: #pragma vertex vert_ao
-  error: 1 plat 21 at (100): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
-  error: 1 plat 21 at (132): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
-  error: 1 plat 21 at (133): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
-  error: 1 plat 21 at (177): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
-  error: 1 plat 21 at (178): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
-  insize=7213 outsize=667 ok=1
-Cmd: preprocess
-  error: 1 plat 21 at (99): Duplicate #pragma vertex found, ignoring: #pragma vertex vert_ao
-  error: 1 plat 21 at (100): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
-  error: 1 plat 21 at (132): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
-  error: 1 plat 21 at (133): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
-  error: 1 plat 21 at (177): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
-  error: 1 plat 21 at (178): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
-  insize=7099 outsize=662 ok=1
-Cmd: preprocess
-  error: 1 plat 21 at (99): Duplicate #pragma vertex found, ignoring: #pragma vertex vert_ao
-  error: 1 plat 21 at (100): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
-  error: 1 plat 21 at (132): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
-  error: 1 plat 21 at (133): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
-  error: 1 plat 21 at (177): Duplicate #pragma vertex found, ignoring: #pragma vertex vert
-  error: 1 plat 21 at (178): Duplicate #pragma fragment found, ignoring: #pragma fragment frag
-  insize=7217 outsize=671 ok=1
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
+Cmd: initializeCompiler
 Cmd: initializeCompiler
 Cmd: initializeCompiler
